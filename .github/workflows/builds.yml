@@ -2,7 +2,7 @@ name: Builds
 on:
   push:
     branches:
-      - v2-edge
+      - v1-edge
 
 permissions:
   contents: read
