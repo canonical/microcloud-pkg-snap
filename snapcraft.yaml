@@ -57,7 +57,7 @@ parts:
 
   microcloud:
     source: https://github.com/canonical/microcloud
-    source-branch: v2-edge
+    source-branch: v1-edge
     source-type: git
     source-depth: 1
     after:
