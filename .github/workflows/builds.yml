@@ -19,7 +19,7 @@ jobs:
     env:
       SSH_AUTH_SOCK: /tmp/ssh_agent.sock
       PACKAGE: "microcloud"
-      REPO: "git+ssh://lxdbot@git.launchpad.net/~canonical-lxd/microcloud"
+      REPO: "git+ssh://lxdbot@git.launchpad.net/~microcloud-snap/microcloud"
       BRANCH: ${{ github.ref_name }}
     steps:
       - name: Checkout code
