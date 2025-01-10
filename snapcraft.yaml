@@ -2,7 +2,7 @@ name: microcloud
 base: core24
 assumes:
  - snapd2.59
-version: "1.1.1"
+version: "1.1.2"
 grade: stable
 source-code: https://github.com/canonical/microcloud.git
 summary: Fully automated private clouds
@@ -69,7 +69,7 @@ parts:
 
   microcloud:
     source: https://github.com/canonical/microcloud
-    source-commit: 9b6555e5c22d8d1854283750a53d1be96251eecd # 1.1.1
+    source-commit: cb5c84b3fd330aad9f74c7be064ce48c4c592f81 # 1.1.2
     source-type: git
     after:
       - dqlite
