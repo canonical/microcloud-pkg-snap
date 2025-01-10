@@ -88,6 +88,8 @@ parts:
       git config user.email "noreply@lists.canonical.com"
       git config user.name "MicroCloud snap builder"
 
+      git cherry-pick f7949b109c2f6a053ef37f72c9d08ad7271e07a6 # microcloud/cmd/microcloud: Use quincy client package
+
       # Setup build environment
       cd microcloud
       export CGO_CFLAGS="-I${CRAFT_STAGE}/include/ -I${CRAFT_STAGE}/usr/local/include/"
