@@ -80,27 +80,19 @@ parts:
       # Build the binaries
       go build -trimpath -o "${CRAFT_PART_INSTALL}/bin/microcloud" -tags=agent ./cmd/microcloud
       go build -trimpath -o "${CRAFT_PART_INSTALL}/bin/microcloudd" -tags=agent,libsqlite3 ./cmd/microcloudd
+
+      # Workaround for https://bugs.launchpad.net/ubuntu/+source/vim/+bug/1968912
+      mkdir -p "${CRAFT_PART_INSTALL}/usr/share/vim/vim91"
+      touch "${CRAFT_PART_INSTALL}/usr/share/vim/vim91/defaults.vim"
     prime:
       - bin/microcloud
       - bin/microcloudd
-
-  vim:
-      plugin: nil
-      stage-packages:
-        - vim-tiny
-      override-build: |
-        touch "${CRAFT_PART_INSTALL}/usr/share/vim/vim91/defaults.vim"
-      organize:
-        usr/bin: bin/
-      prime:
-        - bin/vim.tiny
-        - usr/share/vim/vim91/defaults.vim
+      - usr/share/vim/vim91/defaults.vim
 
   strip:
     after:
       - dqlite
       - microcloud
-      - vim
     plugin: nil
     override-prime: |
       set -x
