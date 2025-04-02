@@ -29,6 +29,11 @@ apps:
     plugs:
       - network
 
+hooks:
+  configure:
+    plugs:
+      - system-observe
+
 parts:
   dqlite:
     source: https://github.com/canonical/dqlite
