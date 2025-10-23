@@ -107,6 +107,7 @@ parts:
       git config user.name "MicroCloud snap builder"
 
       git cherry-pick -x 325580e25193792b762e18cc274115b4e85b8af9 # service: Prevent panic in SupportsOVNNetwork
+      git cherry-pick -x 6c23ff21da51993d7a7edcaa61b007274bd342e1 # cmd/microcloud: Prevent skipping distributed networking
 
       # Setup build environment
       export CGO_CFLAGS="-I${CRAFT_STAGE}/include/ -I${CRAFT_STAGE}/usr/local/include/"
