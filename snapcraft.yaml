@@ -7,17 +7,17 @@ grade: devel
 license: AGPL-3.0-only
 
 title: MicroCloud
-summary: Deploy a scalable, low-touch cloud platform in minutes with MicroCloud.
+summary: Deploy a low-touch, open source cloud platform in minutes with MicroCloud.
 description: |-
-  MicroCloud creates a lightweight cluster of machines that operates as an open source private cloud. It combines LXD for virtualisation, MicroCeph for distributed storage, and MicroOVN for networking—all automatically configured by the **MicroCloud snap** for reproducible, reliable deployments.
+  MicroCloud creates a lightweight cluster of machines that operates as a scalable private cloud. It combines LXD for virtualization, MicroCeph for distributed storage, and MicroOVN for networking—all automatically configured by the **MicroCloud snap** for reproducible, scalable deployments.
 
-  With MicroCloud, you can eliminate the complexity of manual setup and quickly benefit from high availability, automatic security updates, and the advanced features of its components such as self-healing clusters and fine-grained access control. Cluster members can run full virtual machines or lightweight system containers with bare-metal performance.
+  With MicroCloud, you can eliminate the complexity of manual setup and quickly benefit from high availability, streamlined security updates, and fine-grained access control for multi-tenancy. Cluster members can run full virtual machines or lightweight system containers with bare-metal performance. Manage it through your choice of client interfaces, including a graphical UI and CLI.
 
   MicroCloud is designed for small-scale private clouds and hybrid cloud extensions. Its efficiency and simplicity also make it an excellent choice for edge computing, test labs, and other resource-constrained use cases.
 
   **MicroCloud supports single-node deployments, but at least 3 nodes are recommended for high availability.**
 
-  Once the simple bootstrapping is completed, users can launch, run and manage their workloads using system containers or VMs, and otherwise utilize regular LXD functionalities.
+  Once the simple bootstrapping is completed, users can launch, run and manage their workloads, and otherwise utilize regular LXD functionalities.
 
   To get started, LXD, MicroCeph, MicroOVN and MicroCloud snaps are needed. Users can install them at once with the command:
 
