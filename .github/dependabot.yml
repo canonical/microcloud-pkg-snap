@@ -14,3 +14,11 @@ updates:
     schedule:
       interval: "weekly"
     target-branch: "v2-edge"
+
+  # Also check the candidate branches.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    labels: []
+    schedule:
+      interval: "weekly"
+    target-branch: "v2-candidate"
