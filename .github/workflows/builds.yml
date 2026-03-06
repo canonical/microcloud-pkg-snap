@@ -33,11 +33,11 @@ jobs:
         run: |
           set -eux
           localRev="$(git rev-parse HEAD)"
-          # XXX: `ver` contains an array with the 2 versions
-          ver=($(lxd-snapcraft -package "${PACKAGE}" -get-version -file ~/"${PACKAGE}-pkg-snap-lp/snapcraft.yaml"))
+          # XXX: `originVer` contains an array with the 2 versions
+          originVer=($(lxd-snapcraft -package "${PACKAGE}" -get-version -file snapcraft.yaml))
           rsync -a --exclude .git --delete . ~/"${PACKAGE}-pkg-snap-lp"/
           cd ~/"${PACKAGE}-pkg-snap-lp"
-          lxd-snapcraft -package "${PACKAGE}" -set-version "${ver[0]}" -set-source-commit "${ver[1]}"
+          lxd-snapcraft -package "${PACKAGE}" -set-version "${originVer[0]}-${localRev:0:7}" -set-source-commit ""
           git add --all
           git commit --all --quiet -s --allow-empty -m "Automatic upstream build (${BRANCH})" -m "Upstream commit: ${localRev}"
           git show
