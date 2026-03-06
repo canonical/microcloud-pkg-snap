@@ -33,6 +33,19 @@ updates:
     labels: []
     schedule:
       interval: "weekly"
+    target-branch: "latest-candidate"
+    cooldown:
+      default-days: 7
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    labels: []
+    schedule:
+      interval: "weekly"
     target-branch: "v2-candidate"
     cooldown:
       default-days: 7
