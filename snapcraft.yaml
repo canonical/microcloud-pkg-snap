@@ -2,8 +2,8 @@ name: microcloud
 base: core24
 assumes:
  - snapd2.59
-version: git
-grade: devel
+version: "3.1"
+grade: stable
 license: AGPL-3.0-only
 
 title: MicroCloud
@@ -59,7 +59,7 @@ apps:
 parts:
   dqlite:
     source: https://github.com/canonical/dqlite
-    source-branch: main
+    source-branch: v1.18.x
     source-depth: 1
     source-type: git
     plugin: autotools
@@ -84,12 +84,13 @@ parts:
 
   microcloud:
     source: https://github.com/canonical/microcloud
-    source-commit: 4b02c16672e22c41ff7515d10717f373b6a25349 # MicroCloud 1.1
+    source-commit: 641f3c6a6ac7bae8ba1e7651bd0319761111142f # 3.1
+    source-depth: 1
     source-type: git
     after:
       - dqlite
     build-snaps:
-      - go
+      - go/1.25/stable
     plugin: nil
     override-pull: |
       craftctl default
@@ -103,27 +104,12 @@ parts:
       git config user.email "noreply@lists.canonical.com"
       git config user.name "MicroCloud snap builder"
 
-      git cherry-pick e50cd006e8773a3dfaa020c9997eb7789253ee15 # microcloud/cmd/microcloud: Use stdin for preseed.yaml
-      git cherry-pick b1553cb2f3ea111fb497e1d60cec7b3eec9680c6 # microcloud/test/suites: Rename conflicting variable name
-      git cherry-pick b19d1b537e9b9099bb5ddd2f8643ec302a4d1b54 # microcloud/test/includes: Default to edge snap if local one not provided
-      git cherry-pick 404827f070282e47f3a033638587f460dd5c034a # microcloud/test/includes: Fix instance removal between tests
-      git cherry-pick 00d6fca0db2503f29477ea124162ba7a267ba69f # microcloud/service: Add ZFS pool description
-      git cherry-pick 6700eabb7ce0dfe4fb3c3d95fad7e260e4486a66 # microcloud/mdns: Include net.Interface in NetworkInfo
-      git cherry-pick 201968ec5191d7ddfecca700be6c1efdd58b49c9 # microcloud/mdns: Pass the interface to the mdns handler
-      git cherry-pick 71567eadb4192fd1242820584069c29077f7fd7c # microcloud/cmd/microcloud: Pass network interface through initial networking questions
-      git cherry-pick 283efac02aeea6006c39201b939bb774e426bdfe # microcloud/cmd/microcloud: Update usages of askAddress and NetworkInfo
-      git cherry-pick 4e0da91debc563c8eb5cfbc3170d1dd0d13de7ba # microcloud/cmd/microcloud: Add option to specify interface in preseed
-      git cherry-pick 88c7ef73819f2a01e7e7161d685f50860a1b1072 # microcloud/test/suites: Update preseed test
-      git cherry-pick a8584be34dea149e736a2c8e9a1d902523911618 # microcloud/test/includes: Fix typo in testsuite
-      git cherry-pick f19707ad48062c350947a3b432a1e6a6022c638e # microcloud/service: Properly broadcast available interfaces over those interfaces
-
       # Setup build environment
       export CGO_CFLAGS="-I${CRAFT_STAGE}/include/ -I${CRAFT_STAGE}/usr/local/include/"
       export CGO_LDFLAGS="-L${CRAFT_STAGE}/lib/ -L${CRAFT_STAGE}/usr/local/lib/"
       export CGO_LDFLAGS_ALLOW="(-Wl,-wrap,pthread_create)|(-Wl,-z,now)"
 
       # Build the binaries
-      cd microcloud
       go build -trimpath -o "${CRAFT_PART_INSTALL}/bin/microcloud" -tags=agent ./cmd/microcloud
       go build -trimpath -o "${CRAFT_PART_INSTALL}/bin/microcloudd" -tags=agent,libsqlite3 ./cmd/microcloudd
 
