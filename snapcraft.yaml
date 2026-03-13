@@ -84,7 +84,7 @@ parts:
 
   microcloud:
     source: https://github.com/canonical/microcloud
-    source-commit: 641f3c6a6ac7bae8ba1e7651bd0319761111142f # 3.1
+    source-commit: 3a7cf9f7bbf18cecdc40d76cccdcd16357f8cbdd # 3.1
     source-depth: 1
     source-type: git
     after:
