@@ -2,7 +2,7 @@ name: microcloud
 base: core24
 assumes:
  - snapd2.59
-version: "3.1"
+version: "3.2"
 grade: stable
 license: AGPL-3.0-only
 
@@ -84,7 +84,7 @@ parts:
 
   microcloud:
     source: https://github.com/canonical/microcloud
-    source-commit: 3a7cf9f7bbf18cecdc40d76cccdcd16357f8cbdd # 3.1
+    source-commit: 0b15cfce3f2e6957a57c4674c371c1037e2496de # 3.2
     source-depth: 1
     source-type: git
     after:
