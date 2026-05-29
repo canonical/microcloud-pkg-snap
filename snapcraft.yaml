@@ -83,9 +83,7 @@ parts:
       #- lib/*/liblz4.so*  # use liblz4.so from the base snap
 
   microcloud:
-    source: https://github.com/canonical/microcloud
-    source-type: git
-    source-depth: 1
+    source: microcloud-source
     after:
       - dqlite
     build-snaps:
@@ -96,7 +94,7 @@ parts:
       set -ex
 
       # Download the dependencies
-      go get -v -tags=agent ./...
+      go mod download
     override-build: |
       set -ex
 

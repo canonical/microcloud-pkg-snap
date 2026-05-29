@@ -1,0 +1,28 @@
+From 0000000000000000000000000000000000000011 Mon Sep 17 00:00:00 2001
+From: Local Builder <local@example.com>
+Date: Fri, 29 May 2026 00:00:11 +0000
+Subject: [PATCH] snapcraft: build from staged local MicroCloud source
+
+The deploy driver needs to package a locally patched MicroCloud tree so it can
+accept tentacle MicroCeph. Snapcraft cannot access a sibling checkout from
+inside its build environment, so point the part at an in-tree staged source
+directory and use `go mod download` to respect the pinned module graph.
+
+---
+ snapcraft.yaml | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/snapcraft.yaml b/snapcraft.yaml
+index abcdef1..1234567 100644
+--- a/snapcraft.yaml
++++ b/snapcraft.yaml
+@@
+-    source: https://github.com/canonical/microcloud
+-    source-type: git
+-    source-depth: 1
++    source: microcloud-source
+@@
+-      go get -v -tags=agent ./...
++      go mod download
+-- 
+2.43.0
