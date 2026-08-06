@@ -35,7 +35,7 @@ issues: https://github.com/canonical/microcloud/issues
 source-code: https://github.com/canonical/microcloud
 website:
   - https://canonical.com/microcloud
-  - https://documentation.ubuntu.com/microcloud/latest/microcloud/
+  - https://canonical.com/microcloud/docs/latest/microcloud/
 confinement: strict
 
 apps:
